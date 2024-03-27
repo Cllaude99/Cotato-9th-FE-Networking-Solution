@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css"
+    />
+    <style>
+      body {
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [a, setA] = React.useState();
+      const [b, setB] = React.useState();
+      const [operation, setOperation] = React.useState();
+      const [result, setResult] = React.useState();
+      const onChange = (event) => {
+        const {
+          target: { id, value },
+        } = event;
+        if (id === 'a') {
+          setA(value);
+        } else if (id === 'b') {
+          setB(value);
+        } else if (id === 'operation') {
+          setOperation(value);
+        }
+      };
+      const onCalculate = () => {
+        const aNum = parseFloat(a);
+        const bNum = parseFloat(b);
+
+        switch (operation) {
+          case '+':
+            setResult(aNum + bNum);
+            break;
+          case '-':
+            setResult(aNum - bNum);
+            break;
+          case '*':
+            setResult(aNum * bNum);
+            break;
+          case '/':
+            setResult(aNum / bNum);
+            break;
+        }
+      };
+      return (
+        <div className="container">
+          <h1>🔥 Calculator 🔥</h1>
+          <input
+            type="number"
+            id="a"
+            onChange={onChange}
+            value={a}
+            placeholder="👉🏻 Write a number..."
+          />
+          <input
+            type="number"
+            id="b"
+            onChange={onChange}
+            value={b}
+            placeholder="👉🏻 And another one..."
+          />
+          <select onChange={onChange} id="operation" value={operation}>
+            <option value="0">👉🏻 Select operation</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="/">/</option>
+            <option value="*">*</option>
+          </select>
+          <button onClick={onCalculate}>Calculate</button>
+          {result !== undefined ? <h1>The result is: {result}</h1> : ''}
+        </div>
+      );
+    }
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
