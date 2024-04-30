@@ -1,0 +1,5 @@
+export const MOVIE_TYPE = {
+  WANNA_WATCH: 'WANNA_WATCH',
+  WATCHED: 'WATCHED',
+  LIKE: 'LIKE',
+};

@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  a {
+    @apply no-underline text-inherit;
+  }
+  * {
+    @apply box-border;
+  }
+  body {
+    @apply leading-tight font-sans;
+  }
+  button {
+    @apply border-none cursor-pointer;
+  }
+}
+
+@layer components {
+  .primary-btn {
+    @apply w-2/5 rounded-md h-11 ring-1 ring-white hover:bg-slate-100 hover:text-black transition-all;
+  }
+  .title {
+    @apply text-xl font-semibold;
+  }
+}
