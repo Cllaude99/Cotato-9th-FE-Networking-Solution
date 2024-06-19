@@ -1,0 +1,12 @@
+export const theme = {
+  blue: 'blue',
+  black: {
+    veryDark: '#141414',
+    darker: '#181818',
+    lighter: '#2F2F2F',
+  },
+  white: {
+    lighter: '#fff',
+    darker: '#989898',
+  },
+};
